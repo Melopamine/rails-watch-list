@@ -2,6 +2,7 @@ class List < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_many :bookmarks, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :movies, through: :bookmarks
 
   before_destroy :destroy_associated_bookmarks
@@ -12,4 +13,3 @@ class List < ApplicationRecord
     bookmarks.destroy_all
   end
 end
-

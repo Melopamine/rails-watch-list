@@ -1,0 +1,75 @@
+<div class="list-show-image-container">
+  <%= image_tag 'movie-theater.webp', style: 'width: 100%; height: 500px; object-fit: cover;' %>
+  <div class="centered-text-show">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<div class="header-container">
+  <div class="h2-movies">
+    <h2>Movies in this list:</h2>
+  </div>
+  <div class="new-bookmark">
+    <%= link_to 'Add a New Bookmark', new_list_bookmark_path(@list), class: 'add-bookmark-btn' %>
+  </div>
+</div>
+
+<div class="bookmarked-movies-container">
+  <% @list.movies.each_slice(2) do |slice| %>
+    <div class="row">
+      <% slice.each do |movie| %>
+        <div class="movie-card">
+          <%= image_tag 'https://source.unsplash.com/random/', class: 'movie-card-img' %>
+
+          <div class="movie-card-details">
+            <h3><%= movie.title %></h3>
+            <p>Rating: <%= movie.rating %></p>
+
+            <% bookmark = movie.bookmarks.find_by(list: @list) %>
+            <div class="movie-card-actions">
+              <%= link_to "Delete",
+                bookmark_path(bookmark),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } if bookmark
+              %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="reviews-container">
+  <h3>Reviews:</h3>
+  <% @list.reviews.each do |review| %>
+    <p><%= review.content %></p>
+  <% end %>
+</div>
+
+<h3>Write a Review:</h3>
+<%= form_for([@list, @list.reviews.build]) do |f| %>
+  <%= f.text_area :content, placeholder: "Your review..." %>
+  <%= f.submit "Post Review" %>
+<% end %>
+
+<%= form_for [@list, @review] do |f| %>
+  <%= f.hidden_field :rating, id: "star-rating" %>
+
+  <div class="star-rating-container">
+    <% 5.times do |index| %>
+      <i class="fa fa-star" data-value="<%= index + 1 %>"></i>
+    <% end %>
+  </div>
+
+  <%= f.text_area :content, placeholder: "Write your review here..." %>
+  <%= f.submit "Submit Review" %>
+<% end %>
+
+<% @reviews.each do |review| %>
+  <div class="review">
+    <div class="stars">
+      <%= raw display_stars(review.rating) %>
+    </div>
+    <p><%= review.content %></p>
+  </div>
+<% end %>

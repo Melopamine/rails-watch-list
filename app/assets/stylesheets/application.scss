@@ -10,3 +10,182 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.image-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.btn-container {
+  margin-right: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-new-list {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darkgreen;
+  }
+}
+
+.lists-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 400px;
+  height: 200px;
+  margin: 20px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.list-show-image-container {
+  position: relative;
+  margin-bottom: 30px;
+
+  .centered-text-show {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+}
+
+.h2-movies {
+  margin-left: 50px;
+}
+
+.new-bookmark {
+  margin-right: 50px;
+}
+
+.add-bookmark-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; // Green color
+  color: #ffffff; // White text
+  border-radius: 5px; // Rounded corners
+  text-decoration: none; // Removes underline
+  transition: background-color 0.3s ease; // Smooth transition for hover effect
+
+  &:hover {
+      background-color: #45a049; // A slightly darker green for hover effect
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; // Distributes space between items
+  align-items: center; // Aligns items vertically in the center
+  margin-bottom: 20px; // Optional: You can add margin below to provide space between the header and the content below
+}
+
+.bookmarked-movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  gap: 20px; // For spacing between cards
+
+  .movie-card {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 20px;
+    padding: 0px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1); // This adds a shadow effect
+
+    .movie-card-img {
+      flex: none;
+      width: 100%;
+      height: 300px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .movie-card-details {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .movie-card-actions {
+      align-self: flex-start;
+    }
+
+    .movie-card-text {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      background-color: rgba(0,0,0,0.6);
+      padding: 5px;
+    }
+  }
+}
+
+.fa-star {
+  cursor: pointer;
+  margin-right: 5px;
+  color: #ccc; /* Gray color for empty star */
+}
+
+.fa-solid {
+  color: gold; /* Gold color for filled star */
+}
