@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   resources :bookmarks, only: [:destroy]
   resources :lists do
     resources :reviews, only: [:create, :destroy]
+    member do
+      get 'edit_image', as: 'edit_image_list'
+    end
   end
 end

@@ -13,10 +13,15 @@
     <div class="row">
       <% slice.each do |list| %>
         <div class="card">
-          <%= image_tag 'https://source.unsplash.com/random/', class: 'card-img' %>
+          <% if list.photo.attached? %>
+            <%= cl_image_tag list.photo.key, width: 400, height: 300, crop: :fill, class: 'card-img' %>
+          <% else %>
+            <%= image_tag 'https://source.unsplash.com/random/', width: 400, height: 300, crop: :fill, class: 'card-img' %>
+          <% end %>
           <div class="card-text">
             <%= link_to list.name, list_path(list) %>
           </div>
+          <%= link_to 'Edit Image', edit_list_path(list), class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>

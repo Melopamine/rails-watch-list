@@ -1,0 +1,6 @@
+<h2>Edit Image for <%= @list.name %></h2>
+<%= form_for @list, url: list_path(@list), method: :patch, html: { multipart: true } do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <%= f.submit 'Update Image', class: 'btn btn-primary' %>
+<% end %>
