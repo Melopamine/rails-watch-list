@@ -18,6 +18,13 @@ class ReviewsController < ApplicationController
     filled_stars + empty_stars
   end
 
+  def destroy
+    @list = List.find(params[:list_id])
+    @review = @list.reviews.find(params[:id])
+    @review.destroy
+    redirect_to @list, notice: "Review was successfully deleted."
+  end
+
   private
 
   def review_params

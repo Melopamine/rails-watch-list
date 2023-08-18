@@ -43,14 +43,16 @@
   <h3>Reviews:</h3>
   <% @list.reviews.each do |review| %>
     <p><%= review.content %></p>
+    <%= display_stars(review.rating) %>
+    <%= link_to "Delete",
+      list_review_path(@list, review),
+      method: :delete,
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </div>
   <% end %>
 </div>
 
 <h3>Write a Review:</h3>
-<%= form_for([@list, @list.reviews.build]) do |f| %>
-  <%= f.text_area :content, placeholder: "Your review..." %>
-  <%= f.submit "Post Review" %>
-<% end %>
 
 <%= form_for [@list, @review] do |f| %>
   <%= f.hidden_field :rating, id: "star-rating" %>
@@ -65,11 +67,16 @@
   <%= f.submit "Submit Review" %>
 <% end %>
 
-<% @reviews.each do |review| %>
-  <div class="review">
+<%# <%= form_for([@list, @list.reviews.build]) do |f| %>
+  <%# <%= f.text_area :content, placeholder: "Your review..." %>
+  <%# <%= f.submit "Post Review" %>
+<%# <% end %>
+
+<%# <% @reviews.each do |review| %>
+  <%# <div class="review">
     <div class="stars">
       <%= raw display_stars(review.rating) %>
-    </div>
-    <p><%= review.content %></p>
-  </div>
+    <%# </div> %>
+    <%# <p><%= review.content %></p>
+  <%# </div>
 <% end %>
