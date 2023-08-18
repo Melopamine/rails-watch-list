@@ -189,3 +189,36 @@
 .fa-solid {
   color: gold; /* Gold color for filled star */
 }
+
+.reviews-container {
+  /* Add any container styles you already have */
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.stars-container {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  margin-right: 10px; /* Adjust spacing between stars and content */
+}
+
+.review-content {
+  flex: 1; /* Take up remaining space */
+  margin-bottom: 0px;
+}
+
+.chiant {
+  margin-bottom: 0px;
+}
+/* Optional: Style your stars */
+.stars-container i {
+  font-size: 18px; /* Adjust as needed */
+}
+
+/* Optional: Style your delete link */
+.review-content a {
+  color: red; /* Or any other color you prefer */
+}

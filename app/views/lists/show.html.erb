@@ -42,13 +42,18 @@
 <div class="reviews-container">
   <h3>Reviews:</h3>
   <% @list.reviews.each do |review| %>
-    <p><%= review.content %></p>
-    <%= display_stars(review.rating) %>
-    <%= link_to "Delete",
-      list_review_path(@list, review),
-      method: :delete,
-      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  </div>
+    <div class="review">
+      <div class="stars-container">
+        <%= raw display_stars(review.rating) %>
+      </div>
+      <div class="review-content">
+        <p class="chiant"><%= review.content %>
+        <%= link_to "Delete",
+          list_review_path(@list, review),
+          method: :delete,
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p>
+      </div>
+    </div>
   <% end %>
 </div>
 
